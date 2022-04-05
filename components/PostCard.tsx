@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { DetailedHTMLProps, HTMLAttributes } from 'react'
 import moment from 'moment'
-import Link from 'next/Link'
+import Link from 'next/link'
+import { Post } from '../interfaces'
 
-const PostCard = ({ post }) => {
+const PostCard = ({ post }: PostInterface): JSX.Element => {
   return (
     <div className="mb-8 rounded-lg bg-white p-0 pb-12 shadow-lg lg:p-8">
       <div className="relative mb-6 overflow-hidden pb-80 shadow-md ">
@@ -58,6 +59,11 @@ const PostCard = ({ post }) => {
       </div>
     </div>
   )
+}
+
+interface PostInterface
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  post: Post
 }
 
 export default PostCard

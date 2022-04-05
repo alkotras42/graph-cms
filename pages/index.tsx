@@ -1,10 +1,11 @@
-import type { NextPage } from 'next'
+import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import { Categories, PostCard, PostWidget } from '../components'
+import { Post } from '../interfaces'
 import { getPosts } from '../services'
 
-const Home: NextPage = ({posts}) => {
+const Home = ({ posts }: HomeInterface): JSX.Element => {
   return (
     <div className="container mx-auto mb-8 px-10 ">
       <Head>
@@ -29,7 +30,7 @@ const Home: NextPage = ({posts}) => {
   )
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps<HomeInterface> = async () => {
   const posts = (await getPosts()) || []
 
   return {
@@ -37,6 +38,10 @@ export async function getStaticProps() {
       posts,
     },
   }
+}
+
+export interface HomeInterface extends Record<string, unknown> {
+  posts: [Post]
 }
 
 export default Home
