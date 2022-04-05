@@ -10,7 +10,7 @@ import { getRecentPosts, getSimilarPosts } from '../services'
 import { Category, Post } from '../interfaces'
 
 const PostWidget = ({ categories, slug }: PostWidgetInterface): JSX.Element => {
-  const [relatedPosts, setRelatedPosts] = useState([])
+  const [relatedPosts, setRelatedPosts] = useState<Post[]>([])
 
   useEffect(() => {
     if (slug) {
@@ -38,6 +38,14 @@ const PostWidget = ({ categories, slug }: PostWidgetInterface): JSX.Element => {
               className="aling-middle rounded-full"
             />
           </div>
+          <div className="ml-4 flex-grow">
+            <p className="font-xs text-gray-500">
+              {moment(post.createdAt).format('MMMM DD, YYYY')}
+            </p>
+            <Link href={`/post/${post.slug}`} key={post.title}>
+              <p className="text-md">{post.title}</p>
+            </Link>
+          </div>
         </div>
       ))}
     </div>
@@ -46,8 +54,8 @@ const PostWidget = ({ categories, slug }: PostWidgetInterface): JSX.Element => {
 
 interface PostWidgetInterface
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  slug: string
-  categories: [Category]
+  slug?: string
+  categories?: [Category]
 }
 
 export default PostWidget

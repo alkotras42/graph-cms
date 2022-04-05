@@ -1,5 +1,4 @@
 export interface Post {
-  node: string
   author: Author
   createdAt: Date
   slug: string
