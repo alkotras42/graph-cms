@@ -6,6 +6,24 @@ export interface Post {
   excerpt: string
   featuredImage: FeaturedImage
   categories: Category[]
+  content: Content
+}
+
+export interface Content {
+  raw: Raw
+}
+
+export interface Raw {
+  children: RawChild[]
+}
+
+export interface RawChild {
+  type: string
+  children: ChildChild[]
+}
+
+export interface ChildChild {
+  text: string
 }
 
 export interface Author {

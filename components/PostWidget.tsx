@@ -54,8 +54,8 @@ const PostWidget = ({ categories, slug }: PostWidgetInterface): JSX.Element => {
 
 interface PostWidgetInterface
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  slug?: string
-  categories?: [Category]
+  slug: string
+  categories: string[]
 }
 
 export default PostWidget
