@@ -20,7 +20,6 @@ const PostWidget = ({ categories, slug }: PostWidgetInterface): JSX.Element => {
     }
   }, [slug])
 
-  console.log(relatedPosts)
 
   return (
     <div className="mb-8 rounded-lg bg-white p-8 shadow-lg">
